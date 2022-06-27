@@ -1,4 +1,4 @@
-package com.training.collections.set.GenericHashSet;
+package utilities;
 
 public class DuplicatedElementException extends RuntimeException {
     public DuplicatedElementException(String errorMessage) {

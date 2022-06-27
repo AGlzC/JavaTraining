@@ -1,8 +1,9 @@
-package com.training.collections.set.GenericHashSet;
+package com.training.collections.set.generichashset;
 
 import com.training.collections.list.GenericIterator;
 import com.training.collections.list.genericlinkedlist.GenericLinkedList;
 import com.training.collections.set.GenericSet;
+import utilities.DuplicatedElementException;
 
 import java.util.NoSuchElementException;
 

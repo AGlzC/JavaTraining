@@ -1,11 +1,10 @@
 package com.training.collections.set.generichashset;
 
 import com.training.collections.list.GenericIterator;
-import com.training.collections.set.GenericHashSet.DuplicatedElementException;
-import com.training.collections.set.GenericHashSet.GenericHashSet;
 import com.training.collections.set.Vehicle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import utilities.DuplicatedElementException;
 
 import java.util.NoSuchElementException;
 
