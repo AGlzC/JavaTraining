@@ -98,8 +98,8 @@ public class HashSetTest {
                 new Vehicle("PickUp", "Ford", 2000),
                 new Vehicle("Kicks", "Nissan", 2018),
                 new Vehicle("A1", "Audi", 2021),
-                new Vehicle("CX3", "Mazda", 2015),
-                new Vehicle("Sonic", "Chevrolet", 2016),
+                new Vehicle("CX3", "Mazda", 2011),
+                new Vehicle("Sonic", "Chevrolet", 2019),
                 new Vehicle("City", "Honda", 2016)
         };
 
