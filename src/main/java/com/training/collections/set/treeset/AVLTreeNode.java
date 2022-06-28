@@ -1,12 +1,12 @@
 package com.training.collections.set.treeset;
 
-public class GenericTreeNode<T> {
+class AVLTreeNode<T> {
     int height;
     T data;
-    GenericTreeNode<T> left;
-    GenericTreeNode<T> right;
+    AVLTreeNode<T> left;
+    AVLTreeNode<T> right;
 
-    GenericTreeNode(T data) {
+    AVLTreeNode(T data) {
         height = 1;
         this.data = data;
     }

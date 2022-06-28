@@ -1,24 +1,20 @@
-package com.training.collections.list.genericarraylist;
+package com.training.collections.list.stringarraylist;
 
-import com.training.collections.list.GenericIterator;
-import com.training.collections.list.GenericList;
+import com.training.collections.StringIterator;
+import com.training.collections.list.StringList;
 
-import java.lang.reflect.Array;
-
-public class GenericArrayList<T> implements GenericList<T> {
+public class StringArrayList implements StringList {
     private int currentSize;
-    private T[] dataArray;
+    private String[] dataArray;
     private int currentStorageSize = 4;
 
 
-    public GenericArrayList() {
-        dataArray = (T[])new Object[currentStorageSize];
-    }
-    public GenericArrayList(Class<T[]> clazz) {
-        dataArray = clazz.cast(Array.newInstance(clazz.getComponentType(), currentStorageSize));
+    public StringArrayList()
+    {
+        dataArray = new String[currentStorageSize];
     }
 
-    public void add(T data) {
+    public void add(String data) {
         if (currentSize == currentStorageSize) {
             resizeArray();
         }
@@ -26,8 +22,8 @@ public class GenericArrayList<T> implements GenericList<T> {
         currentSize ++;
     }
 
-    public void insert(int index, T data) {
-        if (index < 0 || index > currentSize) {
+    public void insert(int index, String data){
+        if (index < 0 || index > currentSize){
             throw new IndexOutOfBoundsException(index);
         }
         if (currentSize == currentStorageSize) {
@@ -40,14 +36,14 @@ public class GenericArrayList<T> implements GenericList<T> {
         currentSize++;
     }
 
-    public T getAt(int index) {
+    public String getAt(int index) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
         return dataArray[index];
     }
 
-    public void setAt(int index, T data) {
+    public void setAt(int index, String data) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -78,7 +74,7 @@ public class GenericArrayList<T> implements GenericList<T> {
         return currentSize;
     }
 
-    public boolean contains(T data) {
+    public boolean contains(String data) {
         for (int loop = 0; loop < currentSize; loop++) {
             if (dataArray[loop].equals(data)){
                 return true;
@@ -88,7 +84,7 @@ public class GenericArrayList<T> implements GenericList<T> {
     }
 
     @Override
-    public int indexOf(T data) {
+    public int indexOf(String data) {
         for (int loop = 0; loop < currentSize; loop++) {
             if (dataArray[loop].equals(data)){
                 return loop;
@@ -97,13 +93,13 @@ public class GenericArrayList<T> implements GenericList<T> {
         return -1;
     }
 
-    public GenericIterator<T> iterator() {
-        return new GenericIterator<>() {
+    public StringIterator iterator() {
+        return new StringIterator() {
             private int currentIndex = 0;
 
             @Override
-            public T next() {
-                T data = null;
+            public String next() {
+                String data = null;
                 if (currentIndex < currentSize) {
                     data = dataArray[currentIndex++];
                 }
@@ -118,13 +114,13 @@ public class GenericArrayList<T> implements GenericList<T> {
     }
 
     @Override
-    public GenericIterator<T> reverseIterator() {
-        return new GenericIterator<>() {
+    public StringIterator reverseIterator() {
+        return new StringIterator() {
             private int currentIndex = currentSize - 1;
 
             @Override
-            public T next() {
-                T data = null;
+            public String next() {
+                String data = null;
                 if (currentIndex >= 0) {
                     data = dataArray[currentIndex--];
                 }
@@ -140,7 +136,7 @@ public class GenericArrayList<T> implements GenericList<T> {
 
     private void resizeArray() {
         currentStorageSize <<= 1;
-        T[] newArray = (T[]) Array.newInstance(dataArray.getClass().getComponentType(), currentStorageSize);
+        String[] newArray = new String[currentStorageSize];
         System.arraycopy(dataArray, 0, newArray, 0, dataArray.length);
         dataArray = newArray;
     }

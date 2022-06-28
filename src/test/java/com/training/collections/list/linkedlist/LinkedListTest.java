@@ -1,6 +1,6 @@
 package com.training.collections.list.linkedlist;
 
-import com.training.collections.list.Iterator;
+import com.training.collections.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListCreation() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         int size = linkedList.size();
@@ -21,7 +21,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListAddSingleElement() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -36,7 +36,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListAddMultipleElements() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -55,7 +55,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListInsertThrowExceptionOutOfBoundsBelow() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.insert(0, "uno");
@@ -72,7 +72,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListInsertThrowExceptionOutOfBoundsAbove() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.insert(0, "uno");
@@ -89,7 +89,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListInsertAtStartWithEmptyList() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.insert(0, "uno");
@@ -104,7 +104,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListInsertInTheMiddle() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -122,7 +122,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListInsertAtTheLastElement() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -141,7 +141,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListGetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -159,7 +159,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListGetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -177,7 +177,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListGetAtFirstElement() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -192,7 +192,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListGetAtLastElement() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -208,7 +208,7 @@ public class LinkedListTest {
     void testLinkedListGetAtMiddleElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -223,7 +223,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListSetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -241,7 +241,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListSetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -260,7 +260,7 @@ public class LinkedListTest {
     void testLinkedListSetAtFirstElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -277,7 +277,7 @@ public class LinkedListTest {
     void testLinkedListSetAtLastElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -294,7 +294,7 @@ public class LinkedListTest {
     void testLinkedListSetAtMiddleElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -310,7 +310,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListRemoveThrowExceptionOutOfBoundsBelow() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -328,7 +328,7 @@ public class LinkedListTest {
     @Test
     void testLinkedListRemoveThrowExceptionOutOfBoundsAbove() {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -347,7 +347,7 @@ public class LinkedListTest {
     void testLinkedListRemoveAtFirstElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -368,7 +368,7 @@ public class LinkedListTest {
     void testLinkedListRemoveAtMiddleElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -386,7 +386,7 @@ public class LinkedListTest {
     void testLinkedListRemoveAtLastElement()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -405,7 +405,7 @@ public class LinkedListTest {
     void testLinkedListRemoveAllElements()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -421,7 +421,7 @@ public class LinkedListTest {
     void testLinkedListContainsExisting()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -439,7 +439,7 @@ public class LinkedListTest {
     void testLinkedListContainsNotExisting()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -457,7 +457,7 @@ public class LinkedListTest {
     void testLinkedListIndexOfExisting()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -475,7 +475,7 @@ public class LinkedListTest {
     void testLinkedListIndexOfNotExisting()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -493,7 +493,7 @@ public class LinkedListTest {
     void testLinkedListIteratorHasNextTrue()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -501,7 +501,7 @@ public class LinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        Iterator iterator = linkedList.iterator();
+        Iterator<String> iterator = linkedList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -512,10 +512,10 @@ public class LinkedListTest {
     void testLinkedListIteratorHasNextFalse()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
-        Iterator iterator = linkedList.iterator();
+        Iterator<String> iterator = linkedList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -526,7 +526,7 @@ public class LinkedListTest {
     void testLinkedListIteratorNext()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -534,7 +534,7 @@ public class LinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        Iterator iterator = linkedList.iterator();
+        Iterator<String> iterator = linkedList.iterator();
         String data = iterator.next();
 
         // then
@@ -544,7 +544,7 @@ public class LinkedListTest {
     void testLinkedListReversedIteratorHasNextTrue()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -552,7 +552,7 @@ public class LinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        Iterator iterator = linkedList.reverseIterator();
+        Iterator<String> iterator = linkedList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -563,10 +563,10 @@ public class LinkedListTest {
     void testLinkedListReversedIteratorHasNextFalse()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
-        Iterator iterator = linkedList.reverseIterator();
+        Iterator<String> iterator = linkedList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -577,7 +577,7 @@ public class LinkedListTest {
     void testLinkedListReversedIteratorNext()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.add("uno");
@@ -585,7 +585,7 @@ public class LinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        Iterator iterator = linkedList.reverseIterator();
+        Iterator<String> iterator = linkedList.reverseIterator();
         String data = iterator.next();
 
         // then
@@ -596,14 +596,14 @@ public class LinkedListTest {
     void testLinkedListReversedIterator3Inserts()
     {
         // given:
-        LinkedList linkedList = new LinkedList();
+        LinkedList<String> linkedList = new LinkedList<>();
 
         // when:
         linkedList.insert(0, "uno");
         linkedList.insert(1, "dos");
         linkedList.insert(2, "tri");
         linkedList.insert(3, "for");
-        Iterator iterator = linkedList.reverseIterator();
+        Iterator<String> iterator = linkedList.reverseIterator();
         String data;
         while (iterator.hasNext()) {
             data = iterator.next();

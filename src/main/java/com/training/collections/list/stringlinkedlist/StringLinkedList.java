@@ -1,16 +1,16 @@
-package com.training.collections.list.genericlinkedlist;
+package com.training.collections.list.stringlinkedlist;
 
-import com.training.collections.list.GenericIterator;
-import com.training.collections.list.GenericList;
+import com.training.collections.StringIterator;
+import com.training.collections.list.StringList;
 
 
-public class GenericLinkedList<T> implements GenericList<T> {
-    private GenericNode<T> head;
-    private GenericNode<T> tail;
+public class StringLinkedList implements StringList {
+    private StringLinkedListNode head;
+    private StringLinkedListNode tail;
     private int currentSize;
 
-    public void add(T data) {
-        GenericNode<T> current = new GenericNode<>(data, null, tail);
+    public void add(String data) {
+        StringLinkedListNode current = new StringLinkedListNode(data, null, tail);
         if (head == null) {
             head = current;
         }
@@ -22,7 +22,7 @@ public class GenericLinkedList<T> implements GenericList<T> {
         currentSize ++;
     }
 
-    public void insert(int index, T data) {
+    public void insert(int index, String data) {
         if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -30,15 +30,15 @@ public class GenericLinkedList<T> implements GenericList<T> {
             add(data);
         }
         else {
-            GenericNode<T> temporal = getNodeAt(index- 1);
-            GenericNode<T> current = new GenericNode<>(data, temporal.next, temporal);
+            StringLinkedListNode temporal = getNodeAt(index- 1);
+            StringLinkedListNode current = new StringLinkedListNode(data, temporal.next, temporal);
             temporal.next.previous = current;
             temporal.next = current;
             currentSize++;
         }
     }
 
-    public T getAt(int index) {
+    public String getAt(int index) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -51,7 +51,7 @@ public class GenericLinkedList<T> implements GenericList<T> {
         return getNodeAt(index).data;
     }
 
-    public void setAt(int index, T data) {
+    public void setAt(int index, String data) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -71,13 +71,11 @@ public class GenericLinkedList<T> implements GenericList<T> {
             throw new IndexOutOfBoundsException(index);
         }
 
-        GenericNode<T> temporal;
+        StringLinkedListNode temporal;
         if (index == 0) {
             temporal = head;
             head = temporal.next;
-            if (head != null) {
-                head.previous = null;
-            }
+            head.previous = null;
         }
         else if (index == currentSize - 1) {
             temporal = tail;
@@ -103,9 +101,8 @@ public class GenericLinkedList<T> implements GenericList<T> {
         return currentSize;
     }
 
-
-    public boolean contains(T data) {
-        GenericNode<T> temporal = head;
+    public boolean contains(String data) {
+        StringLinkedListNode temporal = head;
         while (temporal != null) {
             if (temporal.data.equals(data)) {
                 return true;
@@ -115,9 +112,10 @@ public class GenericLinkedList<T> implements GenericList<T> {
         return false;
     }
 
-    public int indexOf(T data) {
+    @Override
+    public int indexOf(String data) {
         int index = 0;
-        GenericNode<T> temporal = head;
+        StringLinkedListNode temporal = head;
         while (temporal != null) {
             if (temporal.data.equals(data)) {
                 return index;
@@ -128,13 +126,13 @@ public class GenericLinkedList<T> implements GenericList<T> {
         return -1;
     }
 
-    public GenericIterator<T> iterator() {
-        return new GenericIterator<>() {
-            private GenericNode<T> currentNode = head;
+    public StringIterator iterator() {
+        return new StringIterator() {
+            private StringLinkedListNode currentNode = head;
 
             @Override
-            public T next() {
-                T data = null;
+            public String next() {
+                String data = null;
                 if (currentNode != null) {
                     data = currentNode.data;
                     currentNode = currentNode.next;
@@ -150,13 +148,13 @@ public class GenericLinkedList<T> implements GenericList<T> {
     }
 
     @Override
-    public GenericIterator<T> reverseIterator() {
-        return new GenericIterator<>() {
-            private GenericNode<T> currentNode = tail;
+    public StringIterator reverseIterator() {
+        return new StringIterator() {
+            private StringLinkedListNode currentNode = tail;
 
             @Override
-            public T next() {
-                T data = null;
+            public String next() {
+                String data = null;
                 if (currentNode != null) {
                     data = currentNode.data;
                     currentNode = currentNode.previous;
@@ -171,8 +169,8 @@ public class GenericLinkedList<T> implements GenericList<T> {
         };
     }
 
-    private GenericNode<T> getNodeAt(int index) {
-        GenericNode<T> current = head;
+    private StringLinkedListNode getNodeAt(int index) {
+        StringLinkedListNode current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }

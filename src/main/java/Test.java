@@ -1,15 +1,13 @@
-import com.training.collections.list.Iterator;
-import com.training.collections.list.List;
-import com.training.collections.list.linkedlist.LinkedList;
+import com.training.collections.StringIterator;
+import com.training.collections.list.StringList;
+import com.training.collections.list.stringlinkedlist.StringLinkedList;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Test {
 
 
-    static List ll;
+    static StringList ll;
 
     static void test_add(String expected, String explanation)
     {
@@ -88,7 +86,7 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        ll = new LinkedList();
+        ll = new StringLinkedList();
         //ll = new ArrayList();
 
 
@@ -124,7 +122,7 @@ public class Test {
         test_insert(9, "", "Insert 'nine' at position 9");
 
 
-        Iterator it = ll.iterator();
+        StringIterator it = ll.iterator();
         System.out.println("Contents");
         while (it.hasNext())
         {

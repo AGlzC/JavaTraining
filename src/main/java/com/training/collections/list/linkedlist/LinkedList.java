@@ -1,16 +1,16 @@
 package com.training.collections.list.linkedlist;
 
-import com.training.collections.list.Iterator;
+import com.training.collections.Iterator;
 import com.training.collections.list.List;
 
 
-public class LinkedList implements List{
-    private Node head;
-    private Node tail;
+public class LinkedList<T> implements List<T> {
+    private LinkedListNode<T> head;
+    private LinkedListNode<T> tail;
     private int currentSize;
 
-    public void add(String data) {
-        Node current = new Node(data, null, tail);
+    public void add(T data) {
+        LinkedListNode<T> current = new LinkedListNode<>(data, null, tail);
         if (head == null) {
             head = current;
         }
@@ -22,7 +22,7 @@ public class LinkedList implements List{
         currentSize ++;
     }
 
-    public void insert(int index, String data) {
+    public void insert(int index, T data) {
         if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -30,15 +30,15 @@ public class LinkedList implements List{
             add(data);
         }
         else {
-            Node temporal = getNodeAt(index- 1);
-            Node current = new Node(data, temporal.next, temporal);
+            LinkedListNode<T> temporal = getNodeAt(index- 1);
+            LinkedListNode<T> current = new LinkedListNode<>(data, temporal.next, temporal);
             temporal.next.previous = current;
             temporal.next = current;
             currentSize++;
         }
     }
 
-    public String getAt(int index) {
+    public T getAt(int index) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -51,7 +51,7 @@ public class LinkedList implements List{
         return getNodeAt(index).data;
     }
 
-    public void setAt(int index, String data) {
+    public void setAt(int index, T data) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -71,11 +71,13 @@ public class LinkedList implements List{
             throw new IndexOutOfBoundsException(index);
         }
 
-        Node temporal;
+        LinkedListNode<T> temporal;
         if (index == 0) {
             temporal = head;
             head = temporal.next;
-            head.previous = null;
+            if (head != null) {
+                head.previous = null;
+            }
         }
         else if (index == currentSize - 1) {
             temporal = tail;
@@ -101,8 +103,9 @@ public class LinkedList implements List{
         return currentSize;
     }
 
-    public boolean contains(String data) {
-        Node temporal = head;
+
+    public boolean contains(T data) {
+        LinkedListNode<T> temporal = head;
         while (temporal != null) {
             if (temporal.data.equals(data)) {
                 return true;
@@ -112,10 +115,9 @@ public class LinkedList implements List{
         return false;
     }
 
-    @Override
-    public int indexOf(String data) {
+    public int indexOf(T data) {
         int index = 0;
-        Node temporal = head;
+        LinkedListNode<T> temporal = head;
         while (temporal != null) {
             if (temporal.data.equals(data)) {
                 return index;
@@ -126,13 +128,13 @@ public class LinkedList implements List{
         return -1;
     }
 
-    public Iterator iterator() {
-        return new Iterator() {
-            private Node currentNode = head;
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private LinkedListNode<T> currentNode = head;
 
             @Override
-            public String next() {
-                String data = null;
+            public T next() {
+                T data = null;
                 if (currentNode != null) {
                     data = currentNode.data;
                     currentNode = currentNode.next;
@@ -148,13 +150,13 @@ public class LinkedList implements List{
     }
 
     @Override
-    public Iterator reverseIterator() {
-        return new Iterator() {
-            private Node currentNode = tail;
+    public Iterator<T> reverseIterator() {
+        return new Iterator<>() {
+            private LinkedListNode<T> currentNode = tail;
 
             @Override
-            public String next() {
-                String data = null;
+            public T next() {
+                T data = null;
                 if (currentNode != null) {
                     data = currentNode.data;
                     currentNode = currentNode.previous;
@@ -169,8 +171,8 @@ public class LinkedList implements List{
         };
     }
 
-    private Node getNodeAt(int index) {
-        Node current = head;
+    private LinkedListNode<T> getNodeAt(int index) {
+        LinkedListNode<T> current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
         }

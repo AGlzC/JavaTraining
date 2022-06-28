@@ -1,20 +1,24 @@
 package com.training.collections.list.arraylist;
 
-import com.training.collections.list.Iterator;
+import com.training.collections.Iterator;
 import com.training.collections.list.List;
 
-public class ArrayList implements List {
+import java.lang.reflect.Array;
+
+public class ArrayList<T> implements List<T> {
     private int currentSize;
-    private String[] dataArray;
+    private T[] dataArray;
     private int currentStorageSize = 4;
 
 
-    public ArrayList()
-    {
-        dataArray = new String[currentStorageSize];
+    public ArrayList() {
+        dataArray = (T[])new Object[currentStorageSize];
+    }
+    public ArrayList(Class<T[]> clazz) {
+        dataArray = clazz.cast(Array.newInstance(clazz.getComponentType(), currentStorageSize));
     }
 
-    public void add(String data) {
+    public void add(T data) {
         if (currentSize == currentStorageSize) {
             resizeArray();
         }
@@ -22,8 +26,8 @@ public class ArrayList implements List {
         currentSize ++;
     }
 
-    public void insert(int index, String data){
-        if (index < 0 || index > currentSize){
+    public void insert(int index, T data) {
+        if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
         if (currentSize == currentStorageSize) {
@@ -36,14 +40,14 @@ public class ArrayList implements List {
         currentSize++;
     }
 
-    public String getAt(int index) {
+    public T getAt(int index) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
         return dataArray[index];
     }
 
-    public void setAt(int index, String data) {
+    public void setAt(int index, T data) {
         if (index < 0 || index >= currentSize) {
             throw new IndexOutOfBoundsException(index);
         }
@@ -74,7 +78,7 @@ public class ArrayList implements List {
         return currentSize;
     }
 
-    public boolean contains(String data) {
+    public boolean contains(T data) {
         for (int loop = 0; loop < currentSize; loop++) {
             if (dataArray[loop].equals(data)){
                 return true;
@@ -84,7 +88,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int indexOf(String data) {
+    public int indexOf(T data) {
         for (int loop = 0; loop < currentSize; loop++) {
             if (dataArray[loop].equals(data)){
                 return loop;
@@ -93,13 +97,13 @@ public class ArrayList implements List {
         return -1;
     }
 
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
             private int currentIndex = 0;
 
             @Override
-            public String next() {
-                String data = null;
+            public T next() {
+                T data = null;
                 if (currentIndex < currentSize) {
                     data = dataArray[currentIndex++];
                 }
@@ -114,13 +118,13 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Iterator reverseIterator() {
-        return new Iterator() {
+    public Iterator<T> reverseIterator() {
+        return new Iterator<>() {
             private int currentIndex = currentSize - 1;
 
             @Override
-            public String next() {
-                String data = null;
+            public T next() {
+                T data = null;
                 if (currentIndex >= 0) {
                     data = dataArray[currentIndex--];
                 }
@@ -136,7 +140,7 @@ public class ArrayList implements List {
 
     private void resizeArray() {
         currentStorageSize <<= 1;
-        String[] newArray = new String[currentStorageSize];
+        T[] newArray = (T[]) Array.newInstance(dataArray.getClass().getComponentType(), currentStorageSize);
         System.arraycopy(dataArray, 0, newArray, 0, dataArray.length);
         dataArray = newArray;
     }

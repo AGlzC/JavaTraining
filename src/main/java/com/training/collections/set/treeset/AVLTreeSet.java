@@ -1,14 +1,14 @@
 package com.training.collections.set.treeset;
 
-import com.training.collections.list.GenericIterator;
-import com.training.collections.set.GenericSet;
-import utilities.DuplicatedElementException;
+import com.training.collections.Iterator;
+import com.training.collections.set.Set;
+import com.training.collections.exceptions.DuplicatedElementException;
 
 import java.util.NoSuchElementException;
 
-public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
-    GenericTreeNode<T> root;
-    int currentSize;
+public class AVLTreeSet<T extends Comparable <T>> implements Set<T> {
+    private AVLTreeNode<T> root;
+    private int currentSize;
 
     @Override
     public void add(T data)
@@ -20,10 +20,12 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
     @Override
     public void remove(T data) {
         root = removeNode(root, data);
+        currentSize --;
     }
 
     @Override
     public void removeAll() {
+        root = null;
         currentSize = 0;
     }
 
@@ -38,18 +40,18 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
     }
 
     @Override
-    public GenericIterator<T> iterator() {
-        return new GenericTreeIterator<>(root, false);
+    public Iterator<T> iterator() {
+        return new AVLTreeIterator<>(root, false);
     }
 
     @Override
-    public GenericIterator<T> reverseIterator() {
-        return new GenericTreeIterator<>(root, true);
+    public Iterator<T> reverseIterator() {
+        return new AVLTreeIterator<>(root, true);
     }
 
-    private GenericTreeNode<T> insertNode(GenericTreeNode<T> node, T data) {
+    private AVLTreeNode<T> insertNode(AVLTreeNode<T> node, T data) {
         if (node == null)
-            return (new GenericTreeNode<>(data));
+            return (new AVLTreeNode<>(data));
         if (data.equals(node.data)) {
             throw new DuplicatedElementException(data.toString());
         }
@@ -72,7 +74,7 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
         }
         if (branchDifference < -1)
         {
-            if (data.compareTo(node.left.data) < 0) {
+            if (data.compareTo(node.right.data) < 0) {
                 node.right = rotateRight(node.right);
             }
             return rotateLeft(node);
@@ -80,7 +82,7 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
         return node;
     }
 
-    private GenericTreeNode<T> removeNode(GenericTreeNode<T> node, T data) {
+    private AVLTreeNode<T> removeNode(AVLTreeNode<T> node, T data) {
 
         if (node == null) {
             throw new NoSuchElementException("Non existing element :" + data);
@@ -102,7 +104,7 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
                 node = node.left;
             }
             else {
-                GenericTreeNode<T> temporal = getMostLeftNode(node.right);
+                AVLTreeNode<T> temporal = getMostLeftNode(node.right);
                 node.data = temporal.data;
                 node.right = removeNode(node.right, temporal.data);
             }
@@ -130,7 +132,7 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
         return node;
     }
 
-    private boolean containsNode(GenericTreeNode<T> node, T data) {
+    private boolean containsNode(AVLTreeNode<T> node, T data) {
         if (node == null) {
             return false;
         }
@@ -143,39 +145,39 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
         return true;
     }
 
-    private int height(GenericTreeNode<T> node) {
+    private int height(AVLTreeNode<T> node) {
         if (node == null){
             return 0;
         }
         return node.height;
     }
 
-    private int getHeightDifference(GenericTreeNode<T> node) {
+    private int getHeightDifference(AVLTreeNode<T> node) {
         if (node == null) {
             return 0;
         }
         return height(node.left) - height(node.right);
     }
 
-    private GenericTreeNode<T> getMostLeftNode(GenericTreeNode<T> node) {
-        GenericTreeNode<T> temporal = node;
+    private AVLTreeNode<T> getMostLeftNode(AVLTreeNode<T> node) {
+        AVLTreeNode<T> temporal = node;
         while (temporal.left != null) {
             temporal = temporal.left;
         }
         return temporal;
     }
 
-    private GenericTreeNode<T> getMostRightNode(GenericTreeNode<T> node) {
-        GenericTreeNode<T> temporal = node;
+    private AVLTreeNode<T> getMostRightNode(AVLTreeNode<T> node) {
+        AVLTreeNode<T> temporal = node;
         while (temporal.right != null) {
             temporal = temporal.right;
         }
         return temporal;
     }
 
-    private GenericTreeNode<T> rotateRight(GenericTreeNode<T> nodeA) {
-        GenericTreeNode<T> nodeB = nodeA.left;
-        GenericTreeNode<T> nodeTemporal = nodeB.right;
+    private AVLTreeNode<T> rotateRight(AVLTreeNode<T> nodeA) {
+        AVLTreeNode<T> nodeB = nodeA.left;
+        AVLTreeNode<T> nodeTemporal = nodeB.right;
         nodeB.right = nodeA;
         nodeA.left = nodeTemporal;
         nodeA.height = Math.max(height(nodeA.left), height(nodeA.right)) + 1;
@@ -183,9 +185,9 @@ public class GenericAVLTree<T extends Comparable <T>> implements GenericSet<T> {
         return nodeB;
     }
 
-    private GenericTreeNode<T> rotateLeft(GenericTreeNode<T> nodeB) {
-        GenericTreeNode<T> nodeA = nodeB.right;
-        GenericTreeNode<T> nodeTemporal = nodeA.left;
+    private AVLTreeNode<T> rotateLeft(AVLTreeNode<T> nodeB) {
+        AVLTreeNode<T> nodeA = nodeB.right;
+        AVLTreeNode<T> nodeTemporal = nodeA.left;
         nodeA.left = nodeB;
         nodeB.right = nodeTemporal;
         nodeB.height = Math.max(height(nodeB.left), height(nodeB.right)) + 1;

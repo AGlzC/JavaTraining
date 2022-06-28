@@ -1,7 +1,7 @@
 package com.training.collections.set.treeset;
 
-public class GenericStack<T> {
-    private GenericNodeStack<T> head;
+class Stack<T> {
+    private StackNode<T> head;
 
     public T pop() {
         if (head != null) {
@@ -13,7 +13,7 @@ public class GenericStack<T> {
     }
 
     public void push(T data){
-        head = new GenericNodeStack<>(data, head);
+        head = new StackNode<>(data, head);
     }
 
     public boolean empty() {

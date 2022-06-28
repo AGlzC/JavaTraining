@@ -1,18 +1,18 @@
-package com.training.collections.set.generichashset;
+package com.training.collections.set.hashset;
 
-import com.training.collections.list.GenericIterator;
+import com.training.collections.Iterator;
 import com.training.collections.set.Vehicle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utilities.DuplicatedElementException;
+import com.training.collections.exceptions.DuplicatedElementException;
 
 import java.util.NoSuchElementException;
 
-public class GenericHashSetTest {
+public class HashSetTest {
     @Test
     void testHashSetCreation() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         int size = hashSet.size();
@@ -24,7 +24,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetAdd() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -39,7 +39,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetMultipleAdd() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -60,7 +60,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetDuplicatedAdd() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -86,46 +86,60 @@ public class GenericHashSetTest {
     @Test
     void testHashSetMultipleAddForceResize() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
+        Vehicle[] testCars = new Vehicle[]{
+                new Vehicle("Tiida", "Nissan", 2014),
+                new Vehicle("S10", "Ford", 2002),
+                new Vehicle("Yaris", "Toyota", 2017),
+                new Vehicle("Versa", "Nissan", 2015),
+                new Vehicle("V8", "VW", 1976),
+                new Vehicle("Monza", "Chevrolet", 2007),
+                new Vehicle("Civic", "Honda", 2010),
+                new Vehicle("PickUp", "Ford", 2000),
+                new Vehicle("Kicks", "Nissan", 2018),
+                new Vehicle("A1", "Audi", 2021),
+                new Vehicle("CX3", "Mazda", 2015),
+                new Vehicle("Sonic", "Chevrolet", 2016),
+                new Vehicle("City", "Honda", 2016)
+        };
 
         // when:
-        Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Yaris", "Toyota", 2017);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Versa", "Nissan", 2015);
-        hashSet.add(myCar);
-        myCar = new Vehicle("V8", "VW", 1976);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Monza", "Chevrolet", 2007);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Civic", "Honda", 2010);
-        hashSet.add(myCar);
-        myCar = new Vehicle("PickUp", "Ford", 2000);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Kicks", "Nissan", 2018);
-        hashSet.add(myCar);
-        myCar = new Vehicle("A1", "Audi", 2021);
-        hashSet.add(myCar);
-        myCar = new Vehicle("CX3", "Mazda", 2015);
-        hashSet.add(myCar);
-        myCar = new Vehicle("Sonic", "Chevrolet", 2016);
-        hashSet.add(myCar);
-        myCar = new Vehicle("City", "Honda", 2016);
-        hashSet.add(myCar);
-        myCar = new Vehicle("S10", "Ford", 2002);
-        hashSet.add(myCar);
+        for (Vehicle vehicle : testCars) {
+            hashSet.add(vehicle);
+        }
 
         int size = hashSet.size();
 
         // then
-        Assertions.assertEquals(13, size);
+        Assertions.assertEquals(testCars.length, size);
+        for (Vehicle vehicle : testCars) {
+            Assertions.assertTrue(hashSet.contains(vehicle));
+        }
+    }
+
+    @Test
+    void testHashSetMultipleAddForceResize2() {
+        // given:
+        HashSet<String> hashSet = new HashSet<>();
+
+        // when:
+        for (int loop = 0; loop < 25; loop ++) {
+            hashSet.add("Item" + loop);
+        }
+
+        int size = hashSet.size();
+
+        // then
+        for (int loop = 0; loop < 25; loop ++) {
+            Assertions.assertTrue(hashSet.contains("Item" + loop), "loop" + loop);
+        }
+        Assertions.assertEquals(25, size);
     }
 
     @Test
     void testHashSetRemoveFirst() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCarOriginal = new Vehicle("Tiida", "Nissan", 2014);
@@ -147,7 +161,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetRemoveMiddle() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCarOriginal = new Vehicle("Tiida", "Nissan", 2014);
@@ -169,7 +183,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetRemoveLast() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -191,7 +205,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetRemoveNonExistent() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -218,7 +232,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetRemoveAll() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -240,7 +254,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetContainsExistent() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -260,7 +274,7 @@ public class GenericHashSetTest {
     @Test
     void testHashSetContainsNonExistent() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -279,10 +293,9 @@ public class GenericHashSetTest {
     }
 
     @Test
-    void testHashSetIteratorHasNextTrue()
-    {
+    void testHashSetIteratorHasNextTrue() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -293,7 +306,7 @@ public class GenericHashSetTest {
         hashSet.add(myCar);
         myCar = new Vehicle("V8", "VW", 1976);
         hashSet.add(myCar);
-        GenericIterator<Vehicle> iterator = hashSet.iterator();
+        Iterator<Vehicle> iterator = hashSet.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -301,13 +314,12 @@ public class GenericHashSetTest {
     }
 
     @Test
-    void testHashSetIteratorHasNextFalse()
-    {
+    void testHashSetIteratorHasNextFalse() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
-        GenericIterator<Vehicle> iterator = hashSet.iterator();
+        Iterator<Vehicle> iterator = hashSet.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -315,10 +327,9 @@ public class GenericHashSetTest {
     }
 
     @Test
-    void testHashSetIteratorNext()
-    {
+    void testHashSetIteratorNext() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -329,7 +340,7 @@ public class GenericHashSetTest {
         hashSet.add(myCar);
         myCar = new Vehicle("V8", "VW", 1976);
         hashSet.add(myCar);
-        GenericIterator<Vehicle> iterator = hashSet.iterator();
+        Iterator<Vehicle> iterator = hashSet.iterator();
         Vehicle iteratorVehicle = iterator.next();
 
         // then
@@ -338,10 +349,9 @@ public class GenericHashSetTest {
 
 
     @Test
-    void testHashSetReversedIteratorHasNextTrue()
-    {
+    void testHashSetReversedIteratorHasNextTrue() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -352,7 +362,7 @@ public class GenericHashSetTest {
         hashSet.add(myCar);
         myCar = new Vehicle("V8", "VW", 1976);
         hashSet.add(myCar);
-        GenericIterator<Vehicle> iterator = hashSet.reverseIterator();
+        Iterator<Vehicle> iterator = hashSet.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -360,13 +370,12 @@ public class GenericHashSetTest {
     }
 
     @Test
-    void testHashSetReversedIteratorHasNextFalse()
-    {
+    void testHashSetReversedIteratorHasNextFalse() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
-        GenericIterator<Vehicle> iterator = hashSet.reverseIterator();
+        Iterator<Vehicle> iterator = hashSet.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -374,10 +383,9 @@ public class GenericHashSetTest {
     }
 
     @Test
-    void testHashSetReversedIteratorNext()
-    {
+    void testHashSetReversedIteratorNext() {
         // given:
-        GenericHashSet<Vehicle> hashSet = new GenericHashSet<>();
+        HashSet<Vehicle> hashSet = new HashSet<>();
 
         // when:
         Vehicle myCar = new Vehicle("Tiida", "Nissan", 2014);
@@ -388,7 +396,7 @@ public class GenericHashSetTest {
         hashSet.add(myCar);
         myCar = new Vehicle("V8", "VW", 1976);
         hashSet.add(myCar);
-        GenericIterator<Vehicle> iterator = hashSet.reverseIterator();
+        Iterator<Vehicle> iterator = hashSet.reverseIterator();
         Vehicle iteratorVehicle = iterator.next();
 
         // then

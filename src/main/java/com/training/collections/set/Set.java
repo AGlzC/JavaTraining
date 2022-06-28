@@ -1,8 +1,8 @@
 package com.training.collections.set;
 
-import com.training.collections.list.GenericIterator;
+import com.training.collections.Iterator;
 
-public interface GenericSet<T> {
+public interface Set<T> {
     void add(T data);
 
     void remove(T data);
@@ -13,8 +13,8 @@ public interface GenericSet<T> {
 
     boolean contains(T data);
 
-    GenericIterator iterator();
+    Iterator iterator();
 
-    GenericIterator reverseIterator();
+    Iterator reverseIterator();
 
 }

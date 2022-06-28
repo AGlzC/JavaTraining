@@ -1,15 +1,15 @@
 package com.training.collections.list;
 
-import com.training.collections.list.linkedlist.LinkedList;
+import com.training.collections.Iterator;
 
-public interface List {
-    void add(String data);
+public interface List<T> {
+    void add(T data);
 
-    void insert(int index, String data);
+    void insert(int index, T data);
 
-    String getAt(int index);
+    T getAt(int index);
 
-    void setAt(int index, String data);
+    void setAt(int index, T data);
 
     void remove(int index);
 
@@ -17,12 +17,12 @@ public interface List {
 
     int size();
 
-    boolean contains(String data);
+    boolean contains(T data);
 
-    int indexOf(String data);
+    int indexOf(T data);
 
-    Iterator iterator();
+    Iterator<T> iterator();
 
-    Iterator reverseIterator();
+    Iterator<T> reverseIterator();
 
 }

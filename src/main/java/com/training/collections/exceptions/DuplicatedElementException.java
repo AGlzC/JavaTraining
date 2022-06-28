@@ -1,4 +1,4 @@
-package utilities;
+package com.training.collections.exceptions;
 
 public class DuplicatedElementException extends RuntimeException {
     public DuplicatedElementException(String errorMessage) {

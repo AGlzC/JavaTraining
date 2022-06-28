@@ -1,6 +1,6 @@
 package com.training.collections.list.arraylist;
 
-import com.training.collections.list.Iterator;
+import com.training.collections.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,8 @@ class ArrayListTest {
     void testArrayListCreation()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        //ArrayList<String> arrayList = new ArrayList<>(String[].class);
+        ArrayList<String> arrayList = new ArrayList<>();
 
         // when:
         int size = arrayList.size();
@@ -21,10 +22,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListAddSingleElement()
+    void testGenericArrayListAddSingleElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -36,10 +37,10 @@ class ArrayListTest {
         Assertions.assertEquals("uno", data);
     }
     @Test
-    void testArrayListAddMultipleElements()
+    void testGenericArrayListAddMultipleElements()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -56,9 +57,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListInsertThrowExceptionOutOfBoundsBelow() {
+    void testGenericArrayListInsertThrowExceptionOutOfBoundsBelow() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.insert(0, "uno");
@@ -73,9 +74,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListInsertThrowExceptionOutOfBoundsAbove() {
+    void testGenericArrayListInsertThrowExceptionOutOfBoundsAbove() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.insert(0, "uno");
@@ -90,10 +91,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListInsertAtStartWithEmptyList()
+    void testGenericArrayListInsertAtStartWithEmptyList()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.insert(0,"uno");
@@ -106,10 +107,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListInsertInTheMiddle()
+    void testGenericArrayListInsertInTheMiddle()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -125,10 +126,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListInsertAtTheLastElement()
+    void testGenericArrayListInsertAtTheLastElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -145,9 +146,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListGetAtThrowExceptionOutOfBoundsBelow() {
+    void testGenericArrayListGetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -163,9 +164,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListGetAtThrowExceptionOutOfBoundsAbove() {
+    void testGenericArrayListGetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -181,10 +182,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListGetAtFirstElement()
+    void testGenericArrayListGetAtFirstElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -197,10 +198,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListGetAtastElement()
+    void testGenericArrayListGetAtLastElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -213,10 +214,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListGetAtMiddleElement()
+    void testGenericArrayListGetAtMiddleElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -229,9 +230,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListSetAtThrowExceptionOutOfBoundsBelow() {
+    void testGenericArrayListSetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -247,9 +248,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListSetAtThrowExceptionOutOfBoundsAbove() {
+    void testGenericArrayListSetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -266,10 +267,10 @@ class ArrayListTest {
 
 
     @Test
-    void testArrayListSetAtFirstElement()
+    void testGenericArrayListSetAtFirstElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -283,10 +284,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListSetAtLastElement()
+    void testGenericArrayListSetAtLastElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -300,10 +301,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListSetAtMiddleElement()
+    void testGenericArrayListSetAtMiddleElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -317,9 +318,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveThrowExceptionOutOfBoundsBelow() {
+    void testGenericArrayListRemoveThrowExceptionOutOfBoundsBelow() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -335,9 +336,9 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveThrowExceptionOutOfBoundsAbove() {
+    void testGenericArrayListRemoveThrowExceptionOutOfBoundsAbove() {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -353,10 +354,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveAtFirstElement()
+    void testGenericArrayListRemoveAtFirstElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -374,10 +375,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveAtMiddleElement()
+    void testGenericArrayListRemoveAtMiddleElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -393,10 +394,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveAtLastElement()
+    void testGenericArrayListRemoveAtLastElement()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -412,10 +413,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListRemoveAllElements()
+    void testGenericArrayListRemoveAllElements()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -428,10 +429,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListContainsExisting()
+    void testGenericArrayListContainsExisting()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -446,10 +447,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListContainsNotExisting()
+    void testGenericArrayListContainsNotExisting()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -464,10 +465,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListIndexOfExisting()
+    void testGenericArrayListIndexOfExisting()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -482,10 +483,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListIndexOfNotExisting()
+    void testGenericArrayListIndexOfNotExisting()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -500,10 +501,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListIteratorHasNextTrue()
+    void testGenericArrayListIteratorHasNextTrue()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -511,7 +512,7 @@ class ArrayListTest {
         arrayList.add("tri");
         arrayList.add("for");
         arrayList.add("Lilo");
-        Iterator iterator = arrayList.iterator();
+        Iterator<String> iterator = arrayList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -519,13 +520,13 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListIteratorHasNextFalse()
+    void testGenericArrayListIteratorHasNextFalse()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
-        Iterator iterator = arrayList.iterator();
+        Iterator<String> iterator = arrayList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -533,10 +534,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListIteratorNext()
+    void testGenericArrayListIteratorNext()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -544,7 +545,7 @@ class ArrayListTest {
         arrayList.add("tri");
         arrayList.add("for");
         arrayList.add("Lilo");
-        Iterator iterator = arrayList.iterator();
+        Iterator<String> iterator = arrayList.iterator();
         String data = iterator.next();
 
         // then
@@ -552,10 +553,10 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListReversedIteratorHasNextTrue()
+    void testGenericArrayListReversedIteratorHasNextTrue()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -563,7 +564,7 @@ class ArrayListTest {
         arrayList.add("tri");
         arrayList.add("for");
         arrayList.add("Lilo");
-        Iterator iterator = arrayList.reverseIterator();
+        Iterator<String> iterator = arrayList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -574,10 +575,10 @@ class ArrayListTest {
     void testArrayReversedListIteratorHasNextFalse()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
-        Iterator iterator = arrayList.reverseIterator();
+        Iterator<String> iterator = arrayList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -588,7 +589,7 @@ class ArrayListTest {
     void testArrayReversedListIteratorNext()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.add("uno");
@@ -596,7 +597,7 @@ class ArrayListTest {
         arrayList.add("tri");
         arrayList.add("for");
         arrayList.add("Lilo");
-        Iterator iterator = arrayList.reverseIterator();
+        Iterator<String> iterator = arrayList.reverseIterator();
         String data = iterator.next();
 
         // then
@@ -604,17 +605,17 @@ class ArrayListTest {
     }
 
     @Test
-    void testArrayListReversedIterator3Inserts()
+    void testGenericArrayListReversedIterator3Inserts()
     {
         // given:
-        ArrayList arrayList = new ArrayList();
+        ArrayList<String> arrayList = new ArrayList<>(String[].class);
 
         // when:
         arrayList.insert(0, "uno");
         arrayList.insert(1, "dos");
         arrayList.insert(2, "tri");
         arrayList.insert(3, "for");
-        Iterator iterator = arrayList.reverseIterator();
+        Iterator<String> iterator = arrayList.reverseIterator();
         String data;
         while (iterator.hasNext()) {
             data = iterator.next();

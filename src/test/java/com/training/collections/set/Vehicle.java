@@ -2,7 +2,7 @@ package com.training.collections.set;
 
 import java.util.Objects;
 
-public class Vehicle {
+public class Vehicle implements Comparable<Vehicle>{
     private String model;
     private String marca;
     private int year;
@@ -51,11 +51,16 @@ public class Vehicle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        return year == vehicle.year && model.equals(vehicle.model) && marca.equals(vehicle.marca);
+        return year == vehicle.year;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(model, marca, year);
+        return Objects.hash(year);
+    }
+
+    @Override
+    public int compareTo(Vehicle o) {
+        return Integer.compare(this.year, o.year) ;
     }
 }

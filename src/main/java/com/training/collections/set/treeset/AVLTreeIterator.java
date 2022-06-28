@@ -1,19 +1,19 @@
 package com.training.collections.set.treeset;
 
-import com.training.collections.list.GenericIterator;
+import com.training.collections.Iterator;
 
-public class GenericTreeIterator<T> implements GenericIterator<T> {
-    GenericStack<GenericTreeNode<T>> stack = new GenericStack<>();
+class AVLTreeIterator<T> implements Iterator<T> {
+    Stack<AVLTreeNode<T>> stack = new Stack<>();
     boolean reversed;
 
-    GenericTreeIterator(GenericTreeNode<T> node, boolean reversed){
+    AVLTreeIterator(AVLTreeNode<T> node, boolean reversed){
         this.reversed = reversed;
         pushNodes(node);
     }
 
-    private void pushNodes(GenericTreeNode<T> node)
+    private void pushNodes(AVLTreeNode<T> node)
     {
-        GenericTreeNode<T> temporal = node;
+        AVLTreeNode<T> temporal = node;
         while (temporal != null) {
             stack.push(temporal);
             if (reversed) {
@@ -27,7 +27,7 @@ public class GenericTreeIterator<T> implements GenericIterator<T> {
 
     @Override
     public T next() {
-        GenericTreeNode<T> node = stack.pop();
+        AVLTreeNode<T> node = stack.pop();
         if (reversed){
             pushNodes(node.left);
         }

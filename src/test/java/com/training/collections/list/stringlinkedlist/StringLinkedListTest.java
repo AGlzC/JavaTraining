@@ -1,15 +1,15 @@
-package com.training.collections.list.genericlinkedlist;
+package com.training.collections.list.stringlinkedlist;
 
-import com.training.collections.list.GenericIterator;
+import com.training.collections.StringIterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class GenericLinkedListTest {
+public class StringLinkedListTest {
 
     @Test
     void testLinkedListCreation() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         int size = linkedList.size();
@@ -21,7 +21,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListAddSingleElement() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -36,7 +36,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListAddMultipleElements() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -55,7 +55,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListInsertThrowExceptionOutOfBoundsBelow() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.insert(0, "uno");
@@ -72,7 +72,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListInsertThrowExceptionOutOfBoundsAbove() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.insert(0, "uno");
@@ -89,7 +89,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListInsertAtStartWithEmptyList() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.insert(0, "uno");
@@ -104,7 +104,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListInsertInTheMiddle() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -122,7 +122,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListInsertAtTheLastElement() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -141,7 +141,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListGetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -159,7 +159,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListGetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -177,7 +177,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListGetAtFirstElement() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -192,7 +192,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListGetAtLastElement() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -208,7 +208,7 @@ public class GenericLinkedListTest {
     void testLinkedListGetAtMiddleElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -223,7 +223,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListSetAtThrowExceptionOutOfBoundsBelow() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -241,7 +241,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListSetAtThrowExceptionOutOfBoundsAbove() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -260,7 +260,7 @@ public class GenericLinkedListTest {
     void testLinkedListSetAtFirstElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -277,7 +277,7 @@ public class GenericLinkedListTest {
     void testLinkedListSetAtLastElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -294,7 +294,7 @@ public class GenericLinkedListTest {
     void testLinkedListSetAtMiddleElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -310,7 +310,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListRemoveThrowExceptionOutOfBoundsBelow() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -328,7 +328,7 @@ public class GenericLinkedListTest {
     @Test
     void testLinkedListRemoveThrowExceptionOutOfBoundsAbove() {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -347,7 +347,7 @@ public class GenericLinkedListTest {
     void testLinkedListRemoveAtFirstElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -368,7 +368,7 @@ public class GenericLinkedListTest {
     void testLinkedListRemoveAtMiddleElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -386,7 +386,7 @@ public class GenericLinkedListTest {
     void testLinkedListRemoveAtLastElement()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -405,7 +405,7 @@ public class GenericLinkedListTest {
     void testLinkedListRemoveAllElements()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -421,7 +421,7 @@ public class GenericLinkedListTest {
     void testLinkedListContainsExisting()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -439,7 +439,7 @@ public class GenericLinkedListTest {
     void testLinkedListContainsNotExisting()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -457,7 +457,7 @@ public class GenericLinkedListTest {
     void testLinkedListIndexOfExisting()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -475,7 +475,7 @@ public class GenericLinkedListTest {
     void testLinkedListIndexOfNotExisting()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -493,7 +493,7 @@ public class GenericLinkedListTest {
     void testLinkedListIteratorHasNextTrue()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -501,7 +501,7 @@ public class GenericLinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        GenericIterator<String> iterator = linkedList.iterator();
+        StringIterator iterator = linkedList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -512,10 +512,10 @@ public class GenericLinkedListTest {
     void testLinkedListIteratorHasNextFalse()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
-        GenericIterator<String> iterator = linkedList.iterator();
+        StringIterator iterator = linkedList.iterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -526,7 +526,7 @@ public class GenericLinkedListTest {
     void testLinkedListIteratorNext()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -534,7 +534,7 @@ public class GenericLinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        GenericIterator<String> iterator = linkedList.iterator();
+        StringIterator iterator = linkedList.iterator();
         String data = iterator.next();
 
         // then
@@ -544,7 +544,7 @@ public class GenericLinkedListTest {
     void testLinkedListReversedIteratorHasNextTrue()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -552,7 +552,7 @@ public class GenericLinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        GenericIterator<String> iterator = linkedList.reverseIterator();
+        StringIterator iterator = linkedList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -563,10 +563,10 @@ public class GenericLinkedListTest {
     void testLinkedListReversedIteratorHasNextFalse()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
-        GenericIterator<String> iterator = linkedList.reverseIterator();
+        StringIterator iterator = linkedList.reverseIterator();
         boolean flag = iterator.hasNext();
 
         // then
@@ -577,7 +577,7 @@ public class GenericLinkedListTest {
     void testLinkedListReversedIteratorNext()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.add("uno");
@@ -585,7 +585,7 @@ public class GenericLinkedListTest {
         linkedList.add("tri");
         linkedList.add("for");
         linkedList.add("Lilo");
-        GenericIterator<String> iterator = linkedList.reverseIterator();
+        StringIterator iterator = linkedList.reverseIterator();
         String data = iterator.next();
 
         // then
@@ -596,14 +596,14 @@ public class GenericLinkedListTest {
     void testLinkedListReversedIterator3Inserts()
     {
         // given:
-        GenericLinkedList<String> linkedList = new GenericLinkedList<>();
+        StringLinkedList linkedList = new StringLinkedList();
 
         // when:
         linkedList.insert(0, "uno");
         linkedList.insert(1, "dos");
         linkedList.insert(2, "tri");
         linkedList.insert(3, "for");
-        GenericIterator<String> iterator = linkedList.reverseIterator();
+        StringIterator iterator = linkedList.reverseIterator();
         String data;
         while (iterator.hasNext()) {
             data = iterator.next();

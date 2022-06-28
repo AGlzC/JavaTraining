@@ -1,23 +1,23 @@
-package com.training.collections.set.generichashset;
+package com.training.collections.set.hashset;
 
-import com.training.collections.list.GenericIterator;
-import com.training.collections.list.genericlinkedlist.GenericLinkedList;
-import com.training.collections.set.GenericSet;
-import utilities.DuplicatedElementException;
+import com.training.collections.Iterator;
+import com.training.collections.list.linkedlist.LinkedList;
+import com.training.collections.set.Set;
+import com.training.collections.exceptions.DuplicatedElementException;
 
 import java.util.NoSuchElementException;
 
-public class GenericHashSet<T> implements GenericSet<T> {
+public class HashSet<T> implements Set<T> {
 
-    private GenericLinkedList<T>[] buckets;
+    private LinkedList<T>[] buckets;
     private int currentBucketsSize = 4;
     private int maximumLinkedListSize = 5;
     private int currentSize;
 
-    public GenericHashSet() {
-        buckets = (GenericLinkedList<T>[]) new GenericLinkedList[currentBucketsSize];
+    public HashSet() {
+        buckets = (LinkedList<T>[]) new LinkedList[currentBucketsSize];
         for (int loop = 0; loop < currentBucketsSize; loop ++) {
-            buckets[loop] = new GenericLinkedList<>();
+            buckets[loop] = new LinkedList<>();
         }
     }
 
@@ -28,8 +28,9 @@ public class GenericHashSet<T> implements GenericSet<T> {
         if (buckets[dataFixedHash].contains(data)) {
             throw new DuplicatedElementException(data.toString());
         }
-        if (buckets[dataFixedHash].size() == maximumLinkedListSize) {
+        if (buckets[dataFixedHash].size() >= maximumLinkedListSize) {
             reSize();
+            dataFixedHash = fixedHash(data);
         }
         buckets[dataFixedHash].add(data);
         currentSize++;
@@ -66,11 +67,11 @@ public class GenericHashSet<T> implements GenericSet<T> {
     }
 
     @Override
-    public GenericIterator<T> iterator() {
-        return new GenericIterator<>() {
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
             private int maximumBucketNumber = currentBucketsSize;
             private int currentBucket = 0;
-            private GenericIterator<T> bucketIterator = buckets[currentBucket++].iterator();
+            private Iterator<T> bucketIterator = buckets[currentBucket++].iterator();
 
             @Override
             public T next() {
@@ -93,10 +94,10 @@ public class GenericHashSet<T> implements GenericSet<T> {
     }
 
     @Override
-    public GenericIterator<T> reverseIterator() {
-        return new GenericIterator<>() {
+    public Iterator<T> reverseIterator() {
+        return new Iterator<>() {
             private int currentBucket = currentBucketsSize - 1;
-            private GenericIterator<T> bucketIterator = buckets[currentBucket--].reverseIterator();
+            private Iterator<T> bucketIterator = buckets[currentBucket--].reverseIterator();
 
             @Override
             public T next() {
@@ -124,11 +125,11 @@ public class GenericHashSet<T> implements GenericSet<T> {
     private void reSize() {
         T data;
         int dataFixedHash;
-        GenericIterator<T> iterator = this.iterator();
+        Iterator<T> iterator = this.iterator();
         currentBucketsSize <<= 1;
-        GenericLinkedList<T>[] newbuckets = (GenericLinkedList<T>[]) new GenericLinkedList[currentBucketsSize];
+        LinkedList<T>[] newbuckets = (LinkedList<T>[]) new LinkedList[currentBucketsSize];
         for (int loop = 0; loop < currentBucketsSize; loop ++) {
-            newbuckets[loop] = new GenericLinkedList<>();
+            newbuckets[loop] = new LinkedList<>();
         }
         while (iterator.hasNext()) {
             data = iterator.next();
