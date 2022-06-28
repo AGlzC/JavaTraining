@@ -1,4 +1,4 @@
-package com.training.collections.set.treeset;
+package com.training.collections.set.avltreeset;
 
 import com.training.collections.Iterator;
 import com.training.collections.set.Set;

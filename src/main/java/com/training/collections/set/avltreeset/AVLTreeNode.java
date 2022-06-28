@@ -1,4 +1,4 @@
-package com.training.collections.set.treeset;
+package com.training.collections.set.avltreeset;
 
 class AVLTreeNode<T> {
     int height;

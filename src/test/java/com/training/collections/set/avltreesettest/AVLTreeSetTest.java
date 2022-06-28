@@ -3,8 +3,7 @@ package com.training.collections.set.avltreesettest;
 import com.training.collections.Iterator;
 import com.training.collections.exceptions.DuplicatedElementException;
 import com.training.collections.set.Vehicle;
-import com.training.collections.set.hashset.HashSet;
-import com.training.collections.set.treeset.AVLTreeSet;
+import com.training.collections.set.avltreeset.AVLTreeSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
