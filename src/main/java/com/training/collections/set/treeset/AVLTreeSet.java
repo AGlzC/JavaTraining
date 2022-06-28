@@ -167,14 +167,6 @@ public class AVLTreeSet<T extends Comparable <T>> implements Set<T> {
         return temporal;
     }
 
-    private AVLTreeNode<T> getMostRightNode(AVLTreeNode<T> node) {
-        AVLTreeNode<T> temporal = node;
-        while (temporal.right != null) {
-            temporal = temporal.right;
-        }
-        return temporal;
-    }
-
     private AVLTreeNode<T> rotateRight(AVLTreeNode<T> nodeA) {
         AVLTreeNode<T> nodeB = nodeA.left;
         AVLTreeNode<T> nodeTemporal = nodeB.right;

@@ -1,13 +1,18 @@
 package com.training.collections.set.avltreesettest;
 
+import com.training.collections.Iterator;
+import com.training.collections.exceptions.DuplicatedElementException;
 import com.training.collections.set.Vehicle;
+import com.training.collections.set.hashset.HashSet;
 import com.training.collections.set.treeset.AVLTreeSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 public class AVLTreeSetTest {
     @Test
-    void testAVLTreeSetSetCreation() {
+    void testAVLTreeSetCreation() {
         // given:
         AVLTreeSet<Integer> AVLTree = new AVLTreeSet<>();
 
@@ -19,7 +24,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetAddOneElement() {
+    void testAVLTreeSetAddOneElement() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
 
@@ -32,7 +37,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetAddRotateRight() {
+    void testAVLTreeSetAddRotateRight() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -57,7 +62,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetAddRotateLeftRight() {
+    void testAVLTreeSetAddRotateLeftRight() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -82,7 +87,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetAddRotateLeft() {
+    void testAVLTreeSetAddRotateLeft() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -107,7 +112,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetAddRotateRightLeft() {
+    void testAVLTreeSetAddRotateRightLeft() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -132,7 +137,36 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetRemoveRotateLeftRight() {
+    void testAVLTreeSetDuplicatedAdd() {
+        // given:
+        AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
+        Vehicle[] cars = {
+                new Vehicle("model", "brand", 2013),
+                new Vehicle("model", "brand", 2011),
+                new Vehicle("model", "brand", 2021),
+                new Vehicle("model", "brand", 2008),
+                new Vehicle("model", "brand", 2009)
+        };
+
+        // when:
+        for (Vehicle vehicle : cars) {
+            AVLTree.add(vehicle);
+        }
+        int size = AVLTree.size();
+
+        // then:
+        Vehicle duplicatedMyCar = new Vehicle("Versa", "Nissan", 2013);
+        DuplicatedElementException thrown = Assertions.assertThrows(
+                DuplicatedElementException.class,
+                () -> AVLTree.add(duplicatedMyCar),
+                "Expected exception throw by adding duplicated data"
+        );
+        Assertions.assertTrue(thrown.getMessage().contains("Duplicated element"));
+        Assertions.assertEquals(5, size);
+    }
+
+    @Test
+    void testAVLTreeSetRemoveRotateLeftRight() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -159,7 +193,7 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetRemoveRotateRightLeft() {
+    void testAVLTreeSetRemoveRotateRightLeft() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -186,7 +220,36 @@ public class AVLTreeSetTest {
     }
 
     @Test
-    void testAVLTreeSetSetRemoveAll() {
+    void testAVLTreeSetRemoveNonExistent() {
+        // given:
+        AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
+        Vehicle[] cars = {
+                new Vehicle("model", "brand", 2013),
+                new Vehicle("model", "brand", 2011),
+                new Vehicle("model", "brand", 2021),
+                new Vehicle("model", "brand", 2025),
+                new Vehicle("model", "brand", 2024)
+        };
+        Vehicle myCarOriginal = new Vehicle("V8", "VW", 1975);
+
+        // when:
+        for (Vehicle vehicle : cars) {
+            AVLTree.add(vehicle);
+        }
+        int size = AVLTree.size();
+
+        // then:
+        NoSuchElementException thrown = Assertions.assertThrows(
+                NoSuchElementException.class,
+                () -> AVLTree.remove(myCarOriginal),
+                "Expected exception throw by remove for non existent data"
+        );
+        Assertions.assertTrue(thrown.getMessage().contains("Non existing element"));
+        Assertions.assertEquals(5, size);
+    }
+
+    @Test
+    void testAVLTreeSetRemoveAll() {
         // given:
         AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
         Vehicle[] cars = {
@@ -208,6 +271,68 @@ public class AVLTreeSetTest {
         Assertions.assertEquals(0, size);
     }
 
-    //    Iterator iterator();
+    @Test
+    void testAVLTreeSetIterator() {
+        // given:
+        AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
+        Vehicle[] cars = {
+                new Vehicle("model", "brand", 2013),
+                new Vehicle("model", "brand", 2011),
+                new Vehicle("model", "brand", 2021),
+                new Vehicle("model", "brand", 2025),
+                new Vehicle("model", "brand", 2024)
+        };
+
+        // when:
+        for (Vehicle vehicle : cars) {
+            AVLTree.add(vehicle);
+        }
+        Iterator<Vehicle> vehicleIterator = AVLTree.iterator();
+
+        // then
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[1]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[0]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[2]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[4]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[3]);
+        Assertions.assertFalse(vehicleIterator.hasNext());
+    }
+
+    @Test
+    void testAVLTreeSetReverseIterator() {
+        // given:
+        AVLTreeSet<Vehicle> AVLTree = new AVLTreeSet<>();
+        Vehicle[] cars = {
+                new Vehicle("model", "brand", 2013),
+                new Vehicle("model", "brand", 2011),
+                new Vehicle("model", "brand", 2021),
+                new Vehicle("model", "brand", 2025),
+                new Vehicle("model", "brand", 2024)
+        };
+
+        // when:
+        for (Vehicle vehicle : cars) {
+            AVLTree.add(vehicle);
+        }
+        Iterator<Vehicle> vehicleIterator = AVLTree.reverseIterator();
+
+        // then
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[3]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[4]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[2]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[0]);
+        Assertions.assertTrue(vehicleIterator.hasNext());
+        Assertions.assertEquals(vehicleIterator.next(), cars[1]);
+        Assertions.assertFalse(vehicleIterator.hasNext());
+    }
     //    Iterator reverseIterator();
 }
