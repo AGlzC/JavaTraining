@@ -25,7 +25,7 @@ public class AVLTreeSet<T extends Comparable <T>> implements Set<T> {
 
     @Override
     public void removeAll() {
-        root = null;
+        root = removeAllNodes(root);
         currentSize = 0;
     }
 
@@ -128,6 +128,19 @@ public class AVLTreeSet<T extends Comparable <T>> implements Set<T> {
                 node.right = rotateRight(node.right);
             }
             return rotateLeft(node);
+        }
+        return node;
+    }
+
+    private AVLTreeNode<T> removeAllNodes(AVLTreeNode<T> node) {
+        if (node != null) {
+            if (node.left != null) {
+                removeAllNodes(node.left);
+            }
+            if (node.right != null) {
+                removeAllNodes(node.right);
+            }
+            node = null;
         }
         return node;
     }
