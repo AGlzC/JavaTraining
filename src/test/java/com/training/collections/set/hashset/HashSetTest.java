@@ -1,7 +1,9 @@
 package com.training.collections.set.hashset;
 
 import com.training.collections.Iterator;
+import com.training.collections.list.linkedlist.LinkedList;
 import com.training.collections.set.Vehicle;
+import com.training.collections.set.linkedhashset.LinkedHashSet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import com.training.collections.exceptions.DuplicatedElementException;
@@ -402,4 +404,5 @@ public class HashSetTest {
         // then
         Assertions.assertNotEquals(iteratorVehicle, null);
     }
+
 }

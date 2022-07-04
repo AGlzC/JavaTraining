@@ -22,6 +22,10 @@ public class LinkedList<T> implements List<T> {
         currentSize ++;
     }
 
+    public LinkedListNode<T> addNode(T data) {
+        return head;
+    }
+
     public void insert(int index, T data) {
         if (index < 0 || index > currentSize) {
             throw new IndexOutOfBoundsException(index);
